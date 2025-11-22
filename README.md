@@ -21,7 +21,7 @@
     html,body{height:100%}
     body{
       margin:0;
-      background: linear-gradient(to bottom, #000000, #330000); /* Fond noir → rouge */
+      background: linear-gradient(to bottom, #000000, #330000);
       color:#3a0000;
       -webkit-font-smoothing:antialiased;
     }
@@ -34,7 +34,16 @@
     .brand{display:flex;gap:12px;align-items:center}
     .logo{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800}
     .brand h1{margin:0;font-size:18px}
-    nav a{color:#3a0000;text-decoration:none;margin-left:18px;font-weight:600}
+    nav a{
+      color:#3a0000;
+      text-decoration:none;
+      margin-left:18px;
+      font-weight:600;
+    }
+    nav a:focus, nav a:hover{
+      text-decoration:underline;
+      outline:2px solid var(--accent);
+    }
 
     .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;margin-top:18px}
     .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.05),transparent);padding:28px;border-radius:14px;backdrop-filter:blur(6px);box-shadow:0 6px 30px rgba(0,0,0,0.5)}
@@ -43,7 +52,9 @@
     .invite-row{display:flex;gap:12px;margin-top:18px}
     .btn{padding:12px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer;color:#3a0000}
     .btn-invite{background:linear-gradient(90deg,#d7b3ff,#f7d9e3);color:#3a0000}
+    .btn-invite:focus, .btn-invite:hover{outline:2px solid var(--accent-2)}
     .btn-join{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#3a0000}
+    .btn-join:focus, .btn-join:hover{outline:2px solid var(--accent-2)}
 
     .panel{background:var(--card);padding:18px;border-radius:12px}
     .stat{display:flex;justify-content:space-between;margin-bottom:12px}
@@ -61,27 +72,26 @@
     @media (max-width:640px){.features{grid-template-columns:1fr}.logo{width:42px;height:42px}.brand h1{font-size:16px}}
 
     .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.08);font-weight:700;color:#3a0000}
-    .copy-ok{background:rgba(255,255,255,0.45);padding:8px;border-radius:8px;position:fixed;right:18px;bottom:18px;color:#3a0000;display:none}
+    .copy-ok{background:rgba(255,255,255,0.45);padding:8px;border-radius:8px;position:fixed;right:18px;bottom:18px;color:#3a0000;display:none;z-index:10000}
 
     .bg-shape{position:fixed;right:-120px;top:-120px;width:420px;height:420px;border-radius:40%;filter:blur(60px);opacity:0.25;background:linear-gradient(45deg,var(--accent),var(--accent-2));}
 
-    /* Pétales rouges */
+    /* Pétales rouges avec position aléatoire via JS */
     .petals span{
       position:absolute;
       top:-10%;
       width:10px;
       height:26px;
-      background:#ff0000; /* pétale rouge */
+      background:#ff0000;
       border-radius:50% 50% 70% 70%;
       opacity:0.9;
-      animation:drip 3s linear infinite;
+      animation:drip linear infinite;
       filter:drop-shadow(0 0 6px #990000);
     }
     @keyframes drip{
       0%{transform:translateY(-10%) scale(1);}
       100%{transform:translateY(110vh) scale(0.8);}
     }
-    .petals span:nth-child(odd){animation-duration:10s}
 
     .center-drop{
       position:fixed;
@@ -90,7 +100,7 @@
       transform:translateX(-50%);
       width:26px;
       height:60px;
-      background:#ff0000; /* pétale rouge */
+      background:#ff0000;
       border-radius:50% 50% 70% 70%;
       opacity:1;
       animation:centerDrip 4s ease-in-out infinite;
@@ -160,5 +170,32 @@
       </aside>
     </section>
   </div>
+
+  <div class="copy-ok" id="copyOK">Lien copié !</div>
+
+  <script>
+    // Copier lien et ouvrir
+    const copyBtn = document.getElementById('copyInvite');
+    const openBtn = document.getElementById('openInvite');
+    const copyOK = document.getElementById('copyOK');
+
+    copyBtn.addEventListener('click', () => {
+      const inviteLink = openBtn.href;
+      navigator.clipboard.writeText(inviteLink).then(() => {
+        copyOK.style.display = 'block';
+        setTimeout(() => copyOK.style.display = 'none', 2000);
+        window.open(inviteLink, "_blank");
+      }).catch(err => console.error("Erreur lors de la copie:", err));
+    });
+
+    // Animation pétales aléatoire
+    const petals = document.querySelectorAll('.petals span');
+    petals.forEach(p => {
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      p.style.opacity = Math.random() * 0.5 + 0.5;
+      p.style.transform = `scale(${Math.random() * 0.8 + 0.6})`;
+    });
+  </script>
 </body>
 </html>
