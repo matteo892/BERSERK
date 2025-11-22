@@ -24,7 +24,6 @@
       background: linear-gradient(to bottom, #000000, #330000);
       color:#3a0000;
       -webkit-font-smoothing:antialiased;
-      overflow-x:hidden;
     }
 
     .emoji-box{background:#111;color:#3a0000;}
@@ -77,31 +76,9 @@
 
     .bg-shape{position:fixed;right:-120px;top:-120px;width:420px;height:420px;border-radius:40%;filter:blur(60px);opacity:0.25;background:linear-gradient(45deg,var(--accent),var(--accent-2));}
 
-    /* Pétales rouges */
-    .petals span{
-      position:absolute;
-      top:-10%;
-      width:12px;
-      height:24px;
-      background:#ff4d4d;
-      border-radius:50% 50% 70% 70%;
-      opacity:0.8;
-      animation:fall linear infinite;
-      filter:drop-shadow(0 0 6px #990000);
-    }
-    @keyframes fall{
-      0%{transform:translateY(-10%) rotate(0deg);}
-      100%{transform:translateY(110vh) rotate(360deg);}
-    }
   </style>
 </head>
 <body>
-  <!-- Pétales rouges qui tombent -->
-  <div class="petals" aria-hidden="true">
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
-
   <div class="bg-shape" aria-hidden="true"></div>
   <div class="container">
     <header>
@@ -164,14 +141,6 @@
         setTimeout(() => copyOK.style.display = 'none', 2000);
         window.open(inviteLink, "_blank");
       }).catch(err => console.error("Erreur lors de la copie:", err));
-    });
-
-    // Position et animation aléatoire des pétales
-    const petals = document.querySelectorAll('.petals span');
-    petals.forEach(p => {
-      p.style.left = Math.random() * 100 + 'vw';
-      p.style.animationDuration = (Math.random() * 5 + 5) + 's';
-      p.style.transform = `scale(${Math.random() * 0.8 + 0.6}) rotate(${Math.random()*360}deg)`;
     });
   </script>
 </body>
