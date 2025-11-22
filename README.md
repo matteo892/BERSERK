@@ -19,7 +19,12 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:#000;color:#3a0000;-webkit-font-smoothing:antialiased}
+    body{
+      margin:0;
+      background: linear-gradient(to bottom, #000000, #330000); /* Fond noir → rouge */
+      color:#3a0000;
+      -webkit-font-smoothing:antialiased;
+    }
 
     .emoji-box{background:#111 !important;color:#3a0000 !important;}
 
@@ -60,15 +65,47 @@
 
     .bg-shape{position:fixed;right:-120px;top:-120px;width:420px;height:420px;border-radius:40%;filter:blur(60px);opacity:0.25;background:linear-gradient(45deg,var(--accent),var(--accent-2));}
 
-    .petals span{position:absolute;top:-10%;width:10px;height:26px;background:#300000;border-radius:50% 50% 70% 70%;opacity:0.95;animation:drip 3s linear infinite;filter:drop-shadow(0 0 6px #220000);}
-@keyframes drip{0%{transform:translateY(-10%) scale(1);}100%{transform:translateY(110vh) scale(0.8);}}{0%{transform:translateY(-10%) scale(1)}100%{transform:translateY(110vh) scale(0.8)}}
-.petals span:nth-child(odd){animation-duration:10s}
+    /* Pétales rouges */
+    .petals span{
+      position:absolute;
+      top:-10%;
+      width:10px;
+      height:26px;
+      background:#ff0000; /* pétale rouge */
+      border-radius:50% 50% 70% 70%;
+      opacity:0.9;
+      animation:drip 3s linear infinite;
+      filter:drop-shadow(0 0 6px #990000);
+    }
+    @keyframes drip{
+      0%{transform:translateY(-10%) scale(1);}
+      100%{transform:translateY(110vh) scale(0.8);}
+    }
+    .petals span:nth-child(odd){animation-duration:10s}
+
+    .center-drop{
+      position:fixed;
+      top:-80px;
+      left:50%;
+      transform:translateX(-50%);
+      width:26px;
+      height:60px;
+      background:#ff0000; /* pétale rouge */
+      border-radius:50% 50% 70% 70%;
+      opacity:1;
+      animation:centerDrip 4s ease-in-out infinite;
+      filter:drop-shadow(0 0 10px #990000);
+      z-index:9999;
+    }
+    @keyframes centerDrip{
+      0%{transform:translate(-50%,-80px) scale(0);}
+      20%{transform:translate(-50%,-40px) scale(1.4);}
+      30%{transform:translate(-50%,-40px) scale(1);}
+      100%{transform:translate(-50%,120vh) scale(0.9);}
+    }
 
     button{background:linear-gradient(90deg,#d7b3ff,#f7d9e3);color:#3a0000;padding:12px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
-    .center-drop{position:fixed;top:-40px;left:50%;transform:translateX(-50%);width:14px;height:32px;background:#3a0000;border-radius:50% 50% 70% 70%;opacity:1;animation:centerDrip 2.8s linear infinite;filter:drop-shadow(0 0 8px #220000);z-index:9999;}
-@keyframes centerDrip{0%{transform:translate(-50%,-40px) scale(1);}100%{transform:translate(-50%,110vh) scale(0.9);}}
-.petals span:nth-child(1){left:5%;animation-delay:0s;} .petals span:nth-child(2){left:15%;animation-delay:1s;} .petals span:nth-child(3){left:25%;animation-delay:0.5s;} .petals span:nth-child(4){left:35%;animation-delay:1.3s;} .petals span:nth-child(5){left:45%;animation-delay:0.2s;} .petals span:nth-child(6){left:55%;animation-delay:1.1s;} .petals span:nth-child(7){left:65%;animation-delay:0.4s;} .petals span:nth-child(8){left:75%;animation-delay:1.4s;} .petals span:nth-child(9){left:85%;animation-delay:0.7s;} .petals span:nth-child(10){left:95%;animation-delay:1.6s;} .center-drop{position:fixed;top:-80px;left:50%;transform:translateX(-50%);width:26px;height:60px;background:#300000;border-radius:50% 50% 70% 70%;opacity:1;animation:centerDrip 4s ease-in-out infinite;filter:drop-shadow(0 0 10px #220000);z-index:9999;} @keyframes centerDrip{0%{transform:translate(-50%,-80px) scale(0);}20%{transform:translate(-50%,-40px) scale(1.4);}30%{transform:translate(-50%,-40px) scale(1);}100%{transform:translate(-50%,120vh) scale(0.9);} }
-</style>
+  </style>
 </head>
 <body>
   <div class="center-drop"></div>
@@ -116,4 +153,12 @@
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
             <div class="emoji-box" style="width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;" aria-hidden="true">🩸</div>
             <div>
-              <strong>🩸 BERSERK 🩸 <strong>
+              <strong>🩸 BERSERK 🩸</strong>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </div>
+</body>
+</html>
