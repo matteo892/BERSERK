@@ -78,7 +78,7 @@
 
     .bg-shape{position:fixed;right:-120px;top:-120px;width:420px;height:420px;border-radius:40%;filter:blur(60px);opacity:0.25;background:linear-gradient(45deg,var(--accent),var(--accent-2));}
 
-    /* Pétales rouges sang partout */
+    /* Pétales rouges sang avec dérive */
     .petals span{
       position:absolute;
       top:-30px;
@@ -93,14 +93,22 @@
       animation-iteration-count: infinite;
     }
 
-    @keyframes fall{
-      0% {transform: translateY(0px) rotate(0deg); opacity:0.9;}
-      100% {transform: translateY(110vh) rotate(360deg); opacity:0.6;}
+    @keyframes fall {
+      0% {
+        transform: translateX(0px) translateY(0px) rotate(0deg);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translateX(var(--drift)) translateY(55vh) rotate(180deg);
+      }
+      100% {
+        transform: translateX(calc(-1 * var(--drift))) translateY(110vh) rotate(360deg);
+        opacity: 0.6;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Pétales rouges -->
   <div class="petals" aria-hidden="true"></div>
 
   <div class="bg-shape" aria-hidden="true"></div>
@@ -166,9 +174,9 @@
       }).catch(err => console.error("Erreur lors de la copie:", err));
     });
 
-    // Génération des pétales sur tout l'écran
+    // Génération des pétales avec dérive
     const petalsContainer = document.querySelector('.petals');
-    const numberOfPetals = 40; // plus il y en a, plus dense
+    const numberOfPetals = 40;
 
     for(let i=0; i<numberOfPetals; i++){
       const petal = document.createElement('span');
@@ -177,6 +185,7 @@
       petal.style.transform = `scale(${Math.random() * 0.8 + 0.6}) rotate(${Math.random()*360}deg)`;
       petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
       petal.style.animationDelay = Math.random() * 5 + 's';
+      petal.style.setProperty('--drift', `${Math.random() * 60 - 30}px`); // dérive aléatoire gauche/droite
     }
   </script>
 </body>
