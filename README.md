@@ -106,6 +106,17 @@
         opacity: 0.6;
       }
     }
+
+    /* Style du compteur de membres en ligne */
+    .online-count {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: #3a0000;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
@@ -141,8 +152,12 @@
         <div style="margin-top:14px;display:flex;gap:8px;align-items:center">
           <span class="pill">>500 membres</span>
           <span class="pill">24/7</span>
-          <span class="muted" style="margin-left:auto">Prochain event: Samedi 20h</span>
+          <span class="online-count" id="onlineCount">Membres en ligne : …</span>
         </div>
+
+        <!-- Widget Discord invisible pour récupérer le nombre de membres -->
+        <iframe src="https://discord.com/widget?id=1198629149506551878&theme=dark" width="0" height="0" style="display:none;" id="discordWidget"></iframe>
+
       </div>
 
       <aside>
@@ -185,8 +200,15 @@
       petal.style.transform = `scale(${Math.random() * 0.8 + 0.6}) rotate(${Math.random()*360}deg)`;
       petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
       petal.style.animationDelay = Math.random() * 5 + 's';
-      petal.style.setProperty('--drift', `${Math.random() * 60 - 30}px`); // dérive aléatoire gauche/droite
+      petal.style.setProperty('--drift', `${Math.random() * 60 - 30}px`);
     }
+
+    // Affichage du nombre de membres en ligne via le widget Discord
+    // ATTENTION : Discord ne permet pas de récupérer directement le nombre exact côté client
+    // avec le widget invisible. Pour un compteur exact, il faut passer par un bot / API côté serveur.
+    // Ici on laisse un texte statique ou dynamique si tu utilises un backend.
+
+    document.getElementById('onlineCount').innerText = "Membres en ligne : (widget Discord actif)";
   </script>
 </body>
 </html>
