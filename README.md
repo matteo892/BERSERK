@@ -3,24 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rejoindre le serveur — Thème Berserk</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:400,600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="styles.css">
+  <title>Berserk — Page d'invitation</title>
+  <link href="styles.css" rel="stylesheet">
 </head>
 <body>
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/" aria-label="Accueil - Thème Berserk">
-        <span class="brand-mark" aria-hidden="true">B</span>
-        <span class="brand-text">Berserk</span>
-      </a>
-
-      <nav class="site-nav" aria-label="Navigation principale">
+    <div class="container">
+      <a class="brand" href="/">Berserk</a>
+      <nav class="site-nav">
         <a href="#about">À propos</a>
         <a href="#features">Features</a>
+        <a href="#community">Communauté</a>
         <a href="#widget">Widget</a>
         <a href="#rules">Règles</a>
       </nav>
@@ -32,20 +25,32 @@
       <div class="container hero-grid">
         <div class="hero-content">
           <h1>Sous le signe du Berserk</h1>
-          <p class="lead">Rejoignez une communauté dédiée au manga, aux stratégies, aux events et au fan‑art.</p>
+          <p class="lead">Une communauté pour discuter du manga, partager du fan‑art, organiser des events et jouer ensemble.</p>
 
           <div class="cta-row" role="group" aria-label="Actions">
-            <!-- Remplacez l'attribut data-invite par votre lien complet (ex: https://discord.gg/abcd) -->
-            <a id="joinBtn" class="btn btn-primary" href="YOUR_DISCORD_INVITE_HERE" target="_blank" rel="noopener" aria-disabled="false">Rejoindre le serveur</a>
-
-            <button id="copyInvite" class="btn btn-outline" data-invite="YOUR_DISCORD_INVITE_HERE" aria-label="Copier le lien d'invitation">Copier l'invitation</button>
+            <a id="joinBtn" class="btn btn-primary" href="https://discord.gg/YOUR_INVITE" target="_blank" rel="noopener" aria-disabled="false">Rejoindre le serveur</a>
+            <button id="copyInvite" class="btn btn-outline" data-invite="https://discord.gg/YOUR_INVITE" aria-label="Copier le lien d'invitation">Copier l'invitation</button>
           </div>
 
-          <p class="muted">Préférez-vous un widget ? Activez le "Widget du serveur" et insérez l'ID dans la section Widget ci‑dessous.</p>
+          <p class="muted">Préférez-vous un aperçu du widget ? Activez le widget côté Discord et entrez l'ID du serveur dans la section Widget.</p>
+
+          <div class="quick-info">
+            <div>
+              <strong>Public</strong>
+              <span>Discussions, jeux, fan‑art</span>
+            </div>
+            <div>
+              <strong>Modération</strong>
+              <span>Actifs et bienveillants</span>
+            </div>
+            <div>
+              <strong>Langue</strong>
+              <span>Français</span>
+            </div>
+          </div>
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <!-- Décor visuel simple -->
           <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" class="hero-svg">
             <defs>
               <linearGradient id="g" x1="0" x2="1">
@@ -62,12 +67,15 @@
 
     <section id="about" class="container card">
       <h2>À propos</h2>
-      <p>Bienvenue sur le serveur inspiré par Berserk — un espace pour discuter du manga, du lore, organiser des parties et participer à des événements communautaires. Respect, bienveillance et consentement obligatoires.</p>
+      <p>Bienvenue sur le serveur inspiré par Berserk — un espace pour discuter du manga, des théories, organiser des parties, participer aux events et partager des créations. Respect, bienveillance et protection du droit d'auteur sont essentiels.</p>
+    </section>
 
-      <div id="features" class="features">
+    <section id="features" class="container card">
+      <h2>Features</h2>
+      <div class="features">
         <article class="feature">
           <h3>Discussions</h3>
-          <p>Théories, chapitres, analyses et recommandations.</p>
+          <p>Théories, chapitres et analyses.</p>
         </article>
         <article class="feature">
           <h3>Jeux & Events</h3>
@@ -75,29 +83,41 @@
         </article>
         <article class="feature">
           <h3>Ressources</h3>
-          <p>Guides, fan-art, créations et salons NSFW modérés.</p>
+          <p>Guides, fan‑art et créations.</p>
         </article>
       </div>
     </section>
 
+    <section id="community" class="container card">
+      <h2>Communauté — Activité récente</h2>
+      <ul class="posts">
+        <li>
+          <strong>Heureux accueil</strong>
+          <p>Bienvenue aux nouveaux membres ! Présentez‑vous dans #présentation.</p>
+        </li>
+        <li>
+          <strong>Sondage</strong>
+          <p>Votez pour le prochain event : quiz ou soirée RP ?</p>
+        </li>
+      </ul>
+    </section>
+
     <section id="widget" class="container card dark">
-      <h2>Widget Discord (optionnel)</h2>
-      <p>Pour intégrer un aperçu du serveur : activez "Widget du serveur" dans <em>Paramètres du serveur → Widgets</em>, puis saisissez l'ID du serveur ci‑dessous.</p>
+      <h2>Widget Discord (aperçu)</h2>
+      <p>Activez le widget côté Discord (Paramètres du serveur → Widget) et entrez l'ID du serveur ci‑dessous pour voir l'aperçu.</p>
 
       <div class="widget-config">
         <label for="serverId">ID du serveur (SERVER_ID)</label>
         <input id="serverId" name="serverId" placeholder="Entrez l'ID du serveur" aria-label="ID du serveur pour le widget">
         <div class="widget-actions">
           <button id="previewWidget" class="btn btn-outline">Aperçu</button>
-          <button id="clearWidget" class="btn">Effacer</button>
+          <button id="clearWidget" class="btn" id="clearWidget">Effacer</button>
         </div>
       </div>
 
-      <div id="widgetPreview" class="widget-preview" aria-live="polite"></div>
+      <div id="widgetPreview" class="widget-preview" aria-live="polite">Aucun aperçu — entrez un ID et cliquez sur « Aperçu ».</div>
 
-      <pre class="example" aria-hidden="true">
-&lt;iframe src="https://discord.com/widget?id=SERVER_ID&amp;theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"&gt;&lt;/iframe&gt;
-      </pre>
+      <pre class="example" aria-hidden="true">&lt;iframe src="https://discord.com/widget?id=SERVER_ID&amp;theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"&gt;&lt;/iframe&gt;</pre>
     </section>
 
     <section id="rules" class="container card">
@@ -105,7 +125,7 @@
       <ul>
         <li>Respectez tous les membres.</li>
         <li>Pas de spoilers sans balise, pas de harcèlement.</li>
-        <li>Respectez les règles du droit d'auteur pour les images.</li>
+        <li>Respectez le droit d'auteur pour les images.</li>
       </ul>
     </section>
   </main>
@@ -117,9 +137,7 @@
     </div>
   </footer>
 
-  <!-- Toast notifications -->
   <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
   <script src="script.js"></script>
 </body>
 </html>
