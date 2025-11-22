@@ -25,6 +25,7 @@
       color:#3a0000;
       -webkit-font-smoothing:antialiased;
       overflow-x:hidden;
+      overflow-y:hidden;
     }
 
     .emoji-box{background:#111;color:#3a0000;}
@@ -77,39 +78,30 @@
 
     .bg-shape{position:fixed;right:-120px;top:-120px;width:420px;height:420px;border-radius:40%;filter:blur(60px);opacity:0.25;background:linear-gradient(45deg,var(--accent),var(--accent-2));}
 
-    /* Pétales rouges depuis le coin supérieur droit */
+    /* Pétales rouges sang partout */
     .petals span{
       position:absolute;
-      top:-20px;
-      right:0; /* départ depuis le coin droit */
+      top:-30px;
       width:12px;
       height:24px;
-      background:#ff4d4d;
+      background: #8B0000; /* rouge sang */
       border-radius:50% 50% 70% 70%;
-      opacity:0.8;
-      animation:fall linear infinite;
-      filter:drop-shadow(0 0 6px #990000);
+      opacity:0.9;
+      filter: drop-shadow(0 0 6px #550000);
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
     }
+
     @keyframes fall{
-      0%{transform:translateY(0px) rotate(0deg);}
-      100%{transform:translateY(110vh) rotate(360deg);}
+      0% {transform: translateY(0px) rotate(0deg); opacity:0.9;}
+      100% {transform: translateY(110vh) rotate(360deg); opacity:0.6;}
     }
   </style>
 </head>
 <body>
   <!-- Pétales rouges -->
-  <div class="petals" aria-hidden="true">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+  <div class="petals" aria-hidden="true"></div>
 
   <div class="bg-shape" aria-hidden="true"></div>
   <div class="container">
@@ -174,13 +166,18 @@
       }).catch(err => console.error("Erreur lors de la copie:", err));
     });
 
-    // Animation aléatoire des pétales depuis le coin droit
-    const petals = document.querySelectorAll('.petals span');
-    petals.forEach(p => {
-      p.style.animationDuration = (Math.random() * 5 + 5) + 's';
-      p.style.right = Math.random() * 50 + 'px'; // légèrement décalé vers la gauche pour varier
-      p.style.transform = `scale(${Math.random() * 0.8 + 0.6}) rotate(${Math.random()*360}deg)`;
-    });
+    // Génération des pétales sur tout l'écran
+    const petalsContainer = document.querySelector('.petals');
+    const numberOfPetals = 40; // plus il y en a, plus dense
+
+    for(let i=0; i<numberOfPetals; i++){
+      const petal = document.createElement('span');
+      petalsContainer.appendChild(petal);
+      petal.style.left = Math.random() * window.innerWidth + 'px';
+      petal.style.transform = `scale(${Math.random() * 0.8 + 0.6}) rotate(${Math.random()*360}deg)`;
+      petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      petal.style.animationDelay = Math.random() * 5 + 's';
+    }
   </script>
 </body>
 </html>
