@@ -1,1 +1,82 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rejoindre le serveur — Thème Berserk</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:400,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1 class="site-title">SERVEUR DISCORD</h1>
+      <p class="tagline">Sous le signe du Berserk — combats, lore et communauté</p>
+
+      <div class="cta-row">
+        <!-- Remplacez YOUR_DISCORD_INVITE_HERE par votre lien d'invitation complet (ex: https://discord.gg/abcd) -->
+        <a id="joinBtn" class="btn btn-primary" href="YOUR_DISCORD_INVITE_HERE" target="_blank" rel="noopener">Rejoindre le serveur</a>
+
+        <button id="copyInvite" class="btn btn-outline" data-invite="YOUR_DISCORD_INVITE_HERE">Copier l'invitation</button>
+      </div>
+
+      <small class="note">Si vous préférez un widget Discord, activez le "Widget du serveur" et remplacez SERVER_ID dans le README.</small>
+    </div>
+
+    <svg class="hero-decor" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,120 C150,180 350,20 600,80 C850,140 1050,40 1200,100 L1200,200 L0,200 Z" fill="#0b0b0b" opacity="0.85"/>
+    </svg>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>À propos</h2>
+      <p>Bienvenue sur le serveur inspiré par Berserk — un espace pour discuter du manga, du lore, organiser des parties et plus. Respect et convivialité requis.</p>
+
+      <div class="features">
+        <div class="feature">
+          <h3>Discussions</h3>
+          <p>Théories, chapitres, analyses et recommandations.</p>
+        </div>
+        <div class="feature">
+          <h3>Jeux & Events</h3>
+          <p>Tournois, soirées jeu et activités communautaires.</p>
+        </div>
+        <div class="feature">
+          <h3>Ressources</h3>
+          <p>Guides, fan-art, créations et salons NSFW gesionnés.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card dark">
+      <h2>Widget Discord (optionnel)</h2>
+      <p>Pour intégrer un aperçu du serveur, activez "Widget du serveur" dans <em>Paramètres du serveur → Widgets</em>, puis remplacez <code>SERVER_ID</code> ci-dessous par l'ID du serveur :</p>
+
+      <pre class="example">
+&lt;iframe src="https://discord.com/widget?id=SERVER_ID&amp;theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"&gt;&lt;/iframe&gt;
+      </pre>
+    </section>
+
+    <footer class="card footer">
+      <p>Design: thème sombre / accents rouges — inspiré par l'esthétique Berserk. N'utilisez pas d'images protégées sans autorisation.</p>
+    </footer>
+  </main>
+
+  <script>
+    // Petit script pour copier le lien d'invitation
+    document.getElementById('copyInvite').addEventListener('click', function () {
+      const invite = this.getAttribute('data-invite') || 'YOUR_DISCORD_INVITE_HERE';
+      navigator.clipboard?.writeText(invite).then(function () {
+        alert('Invitation copiée dans le presse-papiers !');
+      }, function () {
+        prompt('Copiez manuellement l\'invitation :', invite);
+      });
+    });
+  </script>
+</body>
+</html>
 
