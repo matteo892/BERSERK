@@ -76,54 +76,9 @@
 
     .bg-shape{position:fixed;right:-120px;top:-120px;width:420px;height:420px;border-radius:40%;filter:blur(60px);opacity:0.25;background:linear-gradient(45deg,var(--accent),var(--accent-2));}
 
-    /* Pétales rouges avec position aléatoire via JS */
-    .petals span{
-      position:absolute;
-      top:-10%;
-      width:10px;
-      height:26px;
-      background:#ff0000;
-      border-radius:50% 50% 70% 70%;
-      opacity:0.9;
-      animation:drip linear infinite;
-      filter:drop-shadow(0 0 6px #990000);
-    }
-    @keyframes drip{
-      0%{transform:translateY(-10%) scale(1);}
-      100%{transform:translateY(110vh) scale(0.8);}
-    }
-
-    .center-drop{
-      position:fixed;
-      top:-80px;
-      left:50%;
-      transform:translateX(-50%);
-      width:26px;
-      height:60px;
-      background:#ff0000;
-      border-radius:50% 50% 70% 70%;
-      opacity:1;
-      animation:centerDrip 4s ease-in-out infinite;
-      filter:drop-shadow(0 0 10px #990000);
-      z-index:9999;
-    }
-    @keyframes centerDrip{
-      0%{transform:translate(-50%,-80px) scale(0);}
-      20%{transform:translate(-50%,-40px) scale(1.4);}
-      30%{transform:translate(-50%,-40px) scale(1);}
-      100%{transform:translate(-50%,120vh) scale(0.9);}
-    }
-
-    button{background:linear-gradient(90deg,#d7b3ff,#f7d9e3);color:#3a0000;padding:12px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
   </style>
 </head>
 <body>
-  <div class="center-drop"></div>
-  <div class="petals" aria-hidden="true">
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
   <div class="bg-shape" aria-hidden="true"></div>
   <div class="container">
     <header>
@@ -186,15 +141,6 @@
         setTimeout(() => copyOK.style.display = 'none', 2000);
         window.open(inviteLink, "_blank");
       }).catch(err => console.error("Erreur lors de la copie:", err));
-    });
-
-    // Animation pétales aléatoire
-    const petals = document.querySelectorAll('.petals span');
-    petals.forEach(p => {
-      p.style.left = Math.random() * 100 + 'vw';
-      p.style.animationDuration = (Math.random() * 5 + 5) + 's';
-      p.style.opacity = Math.random() * 0.5 + 0.5;
-      p.style.transform = `scale(${Math.random() * 0.8 + 0.6})`;
     });
   </script>
 </body>
