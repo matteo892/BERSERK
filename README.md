@@ -26,7 +26,7 @@
       -webkit-font-smoothing:antialiased;
     }
 
-    .emoji-box{background:#111 !important;color:#3a0000 !important;}
+    .emoji-box{background:#111;color:#3a0000;}
 
     .container{max-width:1100px;margin:0 auto;padding:28px}
 
@@ -83,7 +83,7 @@
   <div class="container">
     <header>
       <div class="brand">
-        <div class="logo emoji-box" aria-hidden="true">🩸</div>
+        <div class="logo emoji-box" aria-hidden="true">🔥</div>
         <div>
           <h1>BERSERK</h1>
           <div class="muted">Communauté • Événements • Jeux</div>
@@ -116,9 +116,9 @@
       <aside>
         <div class="panel">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-            <div class="emoji-box" style="width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;" aria-hidden="true">🩸</div>
+            <div class="emoji-box" style="width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;" aria-hidden="true">🔥</div>
             <div>
-              <strong>🩸 BERSERK 🩸</strong>
+              <strong>BERSERK</strong>
             </div>
           </div>
         </div>
