@@ -135,7 +135,7 @@
 
         <div class="invite-row">
           <button class="btn btn-invite" id="copyInvite" aria-label="Copier et ouvrir l'invitation">Rejoindre le serveur</button>
-          <a class="btn btn-join" href="https://discord.gg/YxyFDPCKWp" id="openInvite" target="_blank" rel="noopener noreferrer">Ouvrir l'invitation</a>
+          <a class="btn btn-join" href="https://discord.gg/1198629149506551878" id="openInvite" target="_blank" rel="noopener noreferrer">Ouvrir l'invitation</a>
         </div>
 
         <div style="margin-top:14px;display:flex;gap:8px;align-items:center">
